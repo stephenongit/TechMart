@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechMart — Next-Gen Electronics, Laptops, Phones & Smart Appliances</title>
+
+  <!-- Meta description -->
+  <meta name="description"
+    content="Shop the latest laptops, smartphones, tablets, smart home appliances, and high-fidelity audio at TechMart. Unbeatable prices with global express shipping.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement">
+    <div class="container announcement-content">
+      <div class="announcement-text">
+        <span class="badge-pulse">HOT DEAL</span>
+        <span>⚡ Flash Tech Sale: Up to <strong>20% OFF</strong> with code <span class="promo-code-tag">TECH20</span> |
+          Free Global Express Shipping over $150 ⚡</span>
+      </div>
+      <div class="announcement-actions">
+        <!-- Currency Selector -->
+        <div class="currency-selector">
+          <i class="fa-solid fa-globe"></i>
+          <select id="currencySelect" aria-label="Select Currency">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="INR">INR (₹)</option>
+          </select>
+        </div>
+        <div class="top-links">
+          <a href="#deals"><i class="fa-solid fa-bolt"></i> Daily Deals</a>
+          <a href="#support" id="supportLink"><i class="fa-solid fa-headset"></i> 24/7 Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header" id="mainHeader">
+    <div class="container header-content">
+
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" id="brandLogo">
+        <div class="logo-icon-box">
+          <i class="fa-solid fa-microchip"></i>
+        </div>
+        <div class="logo-text">
+          <span class="brand-name">Tech<span>Mart</span></span>
+          <span class="brand-tagline">NEXT-GEN ELECTRONICS</span>
+        </div>
+      </a>
+
+      <!-- Search Bar with Live Suggestion -->
+      <div class="search-container">
+        <form class="search-bar" id="searchForm" onsubmit="event.preventDefault();">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Search laptops, phones, 4K OLED, Dyson..."
+            autocomplete="off">
+          <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search"
+            style="display: none;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <button type="submit" class="search-submit-btn">Search</button>
+        </form>
+        <!-- Live Search Dropdown -->
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+
+      <!-- User & Cart Header Actions -->
+      <div class="header-actions">
+
+        <!-- Dark / Light Theme Toggle -->
+        <button class="action-btn theme-toggle" id="themeToggleBtn" title="Switch Theme" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon theme-icon-moon"></i>
+          <i class="fa-solid fa-sun theme-icon-sun"></i>
+        </button>
+
+        <!-- Account / Login -->
+        <button class="action-btn user-btn" id="userBtn" title="My Account" aria-label="User Account">
+          <i class="fa-regular fa-user"></i>
+          <span class="action-label" id="userLabel">Sign In</span>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button class="action-btn wishlist-btn" id="wishlistBtn" title="My Wishlist" aria-label="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge-count" id="wishlistCount">0</span>
+          <span class="action-label">Saved</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button class="action-btn cart-btn" id="cartBtn" title="View Shopping Cart" aria-label="Shopping Cart">
+          <div class="cart-icon-wrapper">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="badge-count" id="cartCount">0</span>
+          </div>
+          <div class="cart-price-info">
+            <span class="cart-title">Cart</span>
+            <span class="cart-amount" id="headerCartTotal">$0.00</span>
+          </div>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="action-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Category Navigation Sub-bar -->
+    <nav class="category-nav-bar">
+      <div class="container nav-content">
+        <ul class="category-pills" id="categoryPills">
+          <!-- Dynamically populated categories -->
+        </ul>
+        <div class="nav-right-features">
+          <span class="deal-pill"><i class="fa-solid fa-fire-flame-curved"></i> Free Returns in 30 Days</span>
+          <span class="warranty-pill"><i class="fa-solid fa-shield-halved"></i> 2-Year Warranty</span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <div class="logo-icon-box"><i class="fa-solid fa-microchip"></i></div>
+        <div class="logo-text"><span class="brand-name">Tech<span>Mart</span></span></div>
+      </div>
+      <button class="close-drawer-btn" id="closeMobileDrawerBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="mobile-drawer-content">
+      <h4>Browse Categories</h4>
+      <ul class="mobile-nav-categories" id="mobileNavCategories">
+        <!-- Rendered via JS -->
+      </ul>
+      <hr>
+      <div class="mobile-extra-actions">
+        <div class="mobile-currency-select">
+          <label for="mobileCurrencySelect">Currency:</label>
+          <select id="mobileCurrencySelect">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="INR">INR (₹)</option>
+          </select>
+        </div>
+        <button class="btn btn-primary btn-block" id="mobileSignInBtn"><i class="fa-solid fa-user"></i> Sign In /
+          Register</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Hero Banner Slider -->
+  <section class="hero-section">
+    <div class="hero-slider" id="heroSlider">
+
+      <!-- Slide 1: MacBook Pro -->
+      <div class="hero-slide active" style="--bg-glow: rgba(0, 195, 255, 0.15);">
+        <div class="container hero-container">
+          <div class="hero-text-content">
+            <span class="hero-eyebrow"><i class="fa-solid fa-bolt"></i> Ultimate Pro Power</span>
+            <h1 class="hero-title">MacBook Pro 16" with <span>M3 Max</span></h1>
+            <p class="hero-description">Mind-blowing performance with 16-core CPU, up to 40-core GPU, and stunning
+              Liquid Retina XDR display for extreme pro workflows.</p>
+            <div class="hero-meta">
+              <div class="hero-price">
+                <span class="price-from">Starting at</span>
+                <span class="price-value" data-base-price="3499">$3,499</span>
+                <span class="price-discount-tag">Save $400</span>
+              </div>
+              <div class="hero-cta-group">
+                <button class="btn btn-primary btn-lg" onclick="app.quickViewProduct('lap-01')">
+                  <i class="fa-solid fa-cart-plus"></i> Buy Now
+                </button>
+                <button class="btn btn-outline btn-lg" onclick="app.filterByCategory('laptops')">
+                  View All Laptops <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="hero-image-wrapper">
+            <div class="hero-glow"></div>
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=80"
+              alt="MacBook Pro M3 Max" class="hero-img">
+            <div class="floating-badge badge-top-right">
+              <i class="fa-solid fa-award"></i>
+              <div>
+                <strong>Apple M3 Max</strong>
+                <span>120Hz ProMotion XDR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: iPhone 16 Pro Max -->
+      <div class="hero-slide" style="--bg-glow: rgba(186, 85, 211, 0.15);">
+        <div class="container hero-container">
+          <div class="hero-text-content">
+            <span class="hero-eyebrow"><i class="fa-solid fa-mobile-screen"></i> Titanium. So Strong. So Light.</span>
+            <h1 class="hero-title">iPhone 16 Pro Max <span>Titanium</span></h1>
+            <p class="hero-description">Grade 5 titanium design, revolutionary A18 Pro chip, and pro camera system
+              featuring 4K 120 fps Dolby Vision recording.</p>
+            <div class="hero-meta">
+              <div class="hero-price">
+                <span class="price-from">Only</span>
+                <span class="price-value" data-base-price="1199">$1,199</span>
+                <span class="price-discount-tag">In Stock</span>
+              </div>
+              <div class="hero-cta-group">
+                <button class="btn btn-primary btn-lg" onclick="app.quickViewProduct('ph-01')">
+                  <i class="fa-solid fa-bag-shopping"></i> Explore Features
+                </button>
+                <button class="btn btn-outline btn-lg" onclick="app.filterByCategory('phones')">
+                  All Smartphones <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="hero-image-wrapper">
+            <div class="hero-glow"></div>
+            <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1000&q=80"
+              alt="iPhone 16 Pro Max Titanium" class="hero-img">
+            <div class="floating-badge badge-top-right">
+              <i class="fa-solid fa-microchip"></i>
+              <div>
+                <strong>A18 Pro Silicon</strong>
+                <span>Camera Control Button</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Smart Living Appliances -->
+      <div class="hero-slide" style="--bg-glow: rgba(0, 220, 130, 0.15);">
+        <div class="container hero-container">
+          <div class="hero-text-content">
+            <span class="hero-eyebrow"><i class="fa-solid fa-house-signal"></i> Smart Home Ecosystem</span>
+            <h1 class="hero-title">Intelligent Living. <span>Dyson & Smart Tech</span></h1>
+            <p class="hero-description">Automate your home with laser dust illumination vacuums, smart InstaView
+              refrigerators, and AI barista espresso machines.</p>
+            <div class="hero-meta">
+              <div class="hero-price">
+                <span class="price-from">Starting at</span>
+                <span class="price-value" data-base-price="279">$279</span>
+                <span class="price-discount-tag">Up to 25% OFF</span>
+              </div>
+              <div class="hero-cta-group">
+                <button class="btn btn-primary btn-lg" onclick="app.filterByCategory('appliances')">
+                  Shop Appliances <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="hero-image-wrapper">
+            <div class="hero-glow"></div>
+            <img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=1000&q=80"
+              alt="Smart Home Appliances" class="hero-img">
+            <div class="floating-badge badge-top-right">
+              <i class="fa-solid fa-wifi"></i>
+              <div>
+                <strong>Smart Connected</strong>
+                <span>App & Voice Control</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slider Controls -->
+      <button class="slider-arrow prev" id="heroPrevBtn" aria-label="Previous Slide"><i
+          class="fa-solid fa-chevron-left"></i></button>
+      <button class="slider-arrow next" id="heroNextBtn" aria-label="Next Slide"><i
+          class="fa-solid fa-chevron-right"></i></button>
+
+      <!-- Slider Dots -->
+      <div class="slider-dots" id="heroDots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+      </div>
+
+    </div>
+
+    <!-- Trust Features Banner -->
+    <div class="trust-features-bar">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+          <div class="trust-info">
+            <h4>Free Global Shipping</h4>
+            <p>On all orders exceeding $150</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="trust-info">
+            <h4>2-Year Official Warranty</h4>
+            <p>100% Genuine brand products</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+          <div class="trust-info">
+            <h4>30-Day Money Back</h4>
+            <p>Hassle-free return policy</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
+          <div class="trust-info">
+            <h4>24/7 Expert Tech Support</h4>
+            <p>Live assistance whenever needed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Category Cards Section -->
+  <section class="section categories-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-subtitle">DISCOVER BY HARDWARE</span>
+          <h2 class="section-title">Popular Tech Categories</h2>
+        </div>
+        <p class="section-desc">Explore our curated collections of cutting-edge computing, mobile devices, and smart
+          automation.</p>
+      </div>
+
+      <div class="category-cards-grid">
+        <!-- Laptops -->
+        <div class="cat-card" onclick="app.filterByCategory('laptops')">
+          <div class="cat-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=80"
+              alt="Laptops">
+            <div class="cat-overlay"></div>
+          </div>
+          <div class="cat-card-content">
+            <div class="cat-icon-badge"><i class="fa-solid fa-laptop"></i></div>
+            <h3>Laptops & PCs</h3>
+            <p>MacBook, XPS, ROG & ThinkPad</p>
+            <span class="cat-explore-link">Explore Now <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Smartphones -->
+        <div class="cat-card" onclick="app.filterByCategory('phones')">
+          <div class="cat-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=500&q=80"
+              alt="Smartphones">
+            <div class="cat-overlay"></div>
+          </div>
+          <div class="cat-card-content">
+            <div class="cat-icon-badge"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h3>Smartphones</h3>
+            <p>iPhone 16 Pro, S24 Ultra, Pixel 9</p>
+            <span class="cat-explore-link">Explore Now <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Tablets -->
+        <div class="cat-card" onclick="app.filterByCategory('tablets')">
+          <div class="cat-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=500&q=80"
+              alt="Tablets">
+            <div class="cat-overlay"></div>
+          </div>
+          <div class="cat-card-content">
+            <div class="cat-icon-badge"><i class="fa-solid fa-tablet-screen-button"></i></div>
+            <h3>Tablets & 2-in-1s</h3>
+            <p>iPad Pro M4, Tab S9, Surface Pro</p>
+            <span class="cat-explore-link">Explore Now <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Smart Appliances -->
+        <div class="cat-card" onclick="app.filterByCategory('appliances')">
+          <div class="cat-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=500&q=80"
+              alt="Smart Appliances">
+            <div class="cat-overlay"></div>
+          </div>
+          <div class="cat-card-content">
+            <div class="cat-icon-badge"><i class="fa-solid fa-house-signal"></i></div>
+            <h3>Smart Appliances</h3>
+            <p>Dyson Vacuums, LG InstaView, Air Fryers</p>
+            <span class="cat-explore-link">Explore Now <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Audio & Wearables -->
+        <div class="cat-card" onclick="app.filterByCategory('audio')">
+          <div class="cat-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80"
+              alt="Wearables and Audio">
+            <div class="cat-overlay"></div>
+          </div>
+          <div class="cat-card-content">
+            <div class="cat-icon-badge"><i class="fa-solid fa-headphones-simple"></i></div>
+            <h3>Audio & Wearables</h3>
+            <p>Sony XM5, AirPods Max, Watch Ultra</p>
+            <span class="cat-explore-link">Explore Now <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flash Deals & Countdown Section -->
+  <section class="section deals-section" id="deals">
+    <div class="container">
+      <div class="deals-header-bar">
+        <div class="deals-title-group">
+          <div class="deals-pulse-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+          <div>
+            <h2 class="section-title">Flash Tech Deals of the Day</h2>
+            <p class="section-desc">Limited stock at special introductory prices. Don't miss out!</p>
+          </div>
+        </div>
+
+        <!-- Live Countdown Timer -->
+        <div class="countdown-timer-box" id="dealsCountdown">
+          <span class="countdown-label">Ends in:</span>
+          <div class="timer-unit">
+            <span class="timer-digits" id="timerHours">08</span>
+            <span class="timer-sub">HRS</span>
+          </div>
+          <span class="timer-colon">:</span>
+          <div class="timer-unit">
+            <span class="timer-digits" id="timerMins">42</span>
+            <span class="timer-sub">MIN</span>
+          </div>
+          <span class="timer-colon">:</span>
+          <div class="timer-unit">
+            <span class="timer-digits" id="timerSecs">19</span>
+            <span class="timer-sub">SEC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flash Deals Product Carousel/Grid -->
+      <div class="deals-grid" id="flashDealsGrid">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Product Catalog & Filter Section -->
+  <section class="section catalog-section" id="catalog">
+    <div class="container">
+
+      <!-- Catalog Controls Top Bar -->
+      <div class="catalog-top-bar">
+        <div class="catalog-heading-wrap">
+          <h2 class="section-title" id="catalogSectionTitle">All Electronic Devices</h2>
+          <span class="catalog-count-pill" id="catalogCountPill">18 Products Found</span>
+        </div>
+
+        <div class="catalog-actions-bar">
+          <!-- Mobile Filter Toggle Button -->
+          <button class="btn btn-outline mobile-filter-toggle-btn" id="openMobileFilterBtn">
+            <i class="fa-solid fa-sliders"></i> Filters
+          </button>
+
+          <!-- Sort Selector -->
+          <div class="sort-selector-wrapper">
+            <label for="catalogSortSelect"><i class="fa-solid fa-arrow-down-wide-short"></i> Sort by:</label>
+            <select id="catalogSortSelect">
+              <option value="featured">Featured First</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated (★)</option>
+              <option value="name">Product Name (A-Z)</option>
+            </select>
+          </div>
+
+          <!-- Grid / List Switcher -->
+          <div class="view-switch-group">
+            <button class="view-btn active" id="viewGridBtn" title="Grid View" aria-label="Grid View">
+              <i class="fa-solid fa-table-cells-large"></i>
+            </button>
+            <button class="view-btn" id="viewListBtn" title="List View" aria-label="List View">
+              <i class="fa-solid fa-list"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Catalog Main Layout: Sidebar Filters + Products Grid -->
+      <div class="catalog-layout">
+
+        <!-- Filter Sidebar -->
+        <aside class="catalog-sidebar" id="catalogSidebar">
+          <div class="sidebar-header-mobile">
+            <h3>Filter Products</h3>
+            <button class="close-sidebar-btn" id="closeSidebarBtn"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div class="filter-box">
+            <div class="filter-header">
+              <h4>Category</h4>
+            </div>
+            <div class="filter-content" id="categoryFilterList">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <div class="filter-box">
+            <div class="filter-header">
+              <h4>Max Price</h4>
+              <span class="price-indicator" id="priceDisplay">$4,000</span>
+            </div>
+            <div class="filter-content">
+              <input type="range" id="priceRange" min="200" max="4000" step="50" value="4000" class="range-slider">
+              <div class="range-bounds">
+                <span>$200</span>
+                <span>$4,000</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-box">
+            <div class="filter-header">
+              <h4>Brand</h4>
+            </div>
+            <div class="filter-content brands-list" id="brandFilterList">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <div class="filter-box">
+            <div class="filter-header">
+              <h4>Customer Rating</h4>
+            </div>
+            <div class="filter-content">
+              <label class="custom-radio">
+                <input type="radio" name="ratingFilter" value="0" checked>
+                <span>All Ratings</span>
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="ratingFilter" value="4.8">
+                <span>4.8 ★ and above</span>
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="ratingFilter" value="4.5">
+                <span>4.5 ★ and above</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-box">
+            <div class="filter-header">
+              <h4>Availability</h4>
+            </div>
+            <div class="filter-content">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="inStockFilter">
+                <span>In Stock Only</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" id="onSaleFilter">
+                <span>On Sale / Special Discount</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="btn btn-outline btn-block reset-filters-btn" id="resetFiltersBtn">
+            <i class="fa-solid fa-rotate-left"></i> Reset All Filters
+          </button>
+        </aside>
+
+        <!-- Product Cards Container -->
+        <main class="catalog-products-container">
+          <!-- Active Filter Tags -->
+          <div class="active-filter-tags" id="activeFilterTags"></div>
+
+          <!-- Product Grid -->
+          <div class="products-grid" id="productsGrid">
+            <!-- Dynamic product cards rendered by JS -->
+          </div>
+
+          <!-- Empty State (Hidden by default) -->
+          <div class="catalog-empty-state" id="catalogEmptyState" style="display: none;">
+            <div class="empty-icon"><i class="fa-solid fa-box-open"></i></div>
+            <h3>No products found matching your criteria</h3>
+            <p>Try adjusting your search query, price slider, or category filters.</p>
+            <button class="btn btn-primary" onclick="app.resetAllFilters()">Reset Filters</button>
+          </div>
+        </main>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual Promotional Banners -->
+  <section class="section promo-banners-section">
+    <div class="container promo-grid">
+
+      <!-- Promo 1 -->
+      <div class="promo-banner banner-gaming">
+        <div class="promo-text">
+          <span class="promo-tag">NEXT LEVEL GAMING</span>
+          <h3>ASUS ROG Zephyrus G16</h3>
+          <p>OLED 240Hz, Core Ultra 9, RTX 4080 in a razor-thin chassis.</p>
+          <button class="btn btn-primary" onclick="app.quickViewProduct('lap-03')">
+            Shop Gaming Laptop <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="promo-img-wrap">
+          <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=600&q=80"
+            alt="Gaming Laptop">
+        </div>
+      </div>
+
+      <!-- Promo 2 -->
+      <div class="promo-banner banner-home">
+        <div class="promo-text">
+          <span class="promo-tag">CLEAN & SMART HOME</span>
+          <h3>Dyson V15 Detect + iRobot</h3>
+          <p>Microscopic laser dust detection and autonomous auto-refill mopping.</p>
+          <button class="btn btn-primary" onclick="app.filterByCategory('appliances')">
+            Explore Smart Home <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="promo-img-wrap">
+          <img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=600&q=80"
+            alt="Dyson Vacuum Smart Appliance">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Customer Testimonials -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">LOVED BY TECH ENTHUSIASTS</span>
+        <h2 class="section-title">What Our Customers Say</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testi-text">"Ordered the MacBook Pro 16\" M3 Max with express shipping. Arrived in pristine
+            condition in 48 hours. The customer support answered my questions about RAM options in minutes!"</p>
+          <div class="testi-user">
+            <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+            <div>
+              <strong>David Miller</strong>
+              <span>Senior Software Architect</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testi-text">"The iPhone 16 Pro Max titanium finish is breathtaking, and TechMart's price with the
+            TECH20 coupon beat every local retailer. Will definitely buy my smart appliances here next."</p>
+          <div class="testi-user">
+            <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+            <div>
+              <strong>Elena Rostova</strong>
+              <span>Creative Director</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+              class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testi-text">"The Dyson V15 Detect was a game changer for our new home. Truly genuine products with
+            full manufacturer warranty card included. 5 stars all the way!"</p>
+          <div class="testi-user">
+            <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+            <div>
+              <strong>Marcus Chen</strong>
+              <span>Home Automation Specialist</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup Section -->
+  <section class="section newsletter-section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <div class="newsletter-icon"><i class="fa-solid fa-paper-plane"></i></div>
+          <div>
+            <h3>Unlock 15% OFF Your First Tech Order</h3>
+            <p>Subscribe to receive exclusive hardware release alerts, early bird flash sales, and tech discount
+              vouchers.</p>
+          </div>
+        </div>
+        <form class="newsletter-form" id="newsletterForm" onsubmit="app.handleNewsletter(event)">
+          <div class="input-with-button">
+            <input type="email" id="newsletterEmail" placeholder="Enter your email address" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+          <span class="privacy-notice"><i class="fa-solid fa-lock"></i> No spam ever. Unsubscribe at any time.</span>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Footer -->
+  <footer class="main-footer" id="support">
+    <div class="container footer-content">
+
+      <!-- Company Brand Column -->
+      <div class="footer-col brand-col">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box"><i class="fa-solid fa-microchip"></i></div>
+          <div class="logo-text">
+            <span class="brand-name">Tech<span>Mart</span></span>
+            <span class="brand-tagline">NEXT-GEN ELECTRONICS</span>
+          </div>
+        </a>
+        <p class="footer-desc">Your premier digital destination for high-performance laptops, flagship smartphones,
+          productivity tablets, and intelligent smart home appliances.</p>
+
+        <div class="footer-contact-info">
+          <p><i class="fa-solid fa-envelope"></i> support@techmart.example</p>
+          <p><i class="fa-solid fa-phone"></i> +1 (800) 832-4627 (24/7 Support)</p>
+          <p><i class="fa-solid fa-location-dot"></i> Silicon Tech Tower, San Francisco, CA</p>
+        </div>
+
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <!-- Categories Links -->
+      <div class="footer-col">
+        <h4>Product Categories</h4>
+        <ul class="footer-links">
+          <li><a href="#catalog" onclick="app.filterByCategory('laptops')">Laptops & UltraBooks</a></li>
+          <li><a href="#catalog" onclick="app.filterByCategory('phones')">Flagship Smartphones</a></li>
+          <li><a href="#catalog" onclick="app.filterByCategory('tablets')">Tablets & Copilot+ PCs</a></li>
+          <li><a href="#catalog" onclick="app.filterByCategory('appliances')">Smart Home Appliances</a></li>
+          <li><a href="#catalog" onclick="app.filterByCategory('audio')">Headphones & Wearables</a></li>
+          <li><a href="#deals">Flash Sale & Hot Deals</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Service -->
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="app.showToast('Order tracking feature opened! (Simulated)', 'info')">Track Your
+              Order</a></li>
+          <li><a href="#"
+              onclick="app.showToast('Warranty claims process is active for 2 years on all items.', 'info')">Warranty &
+              Guarantees</a></li>
+          <li><a href="#" onclick="app.showToast('Easy 30-day money back returns on all hardware.', 'info')">Returns &
+              Exchanges</a></li>
+          <li><a href="#" onclick="app.showToast('Free worldwide express delivery over $150.', 'info')">Shipping
+              Information</a></li>
+          <li><a href="#" onclick="app.openSupportModal()">Contact Tech Specialists</a></li>
+          <li><a href="#"
+              onclick="app.showToast('Privacy Policy: All customer data is AES-256 encrypted.', 'info')">Privacy &
+              Security</a></li>
+        </ul>
+      </div>
+
+      <!-- Accepted Payment & Trust Badges -->
+      <div class="footer-col">
+        <h4>Payment & Security</h4>
+        <p class="footer-desc">Transactions are 256-bit encrypted with PCI-DSS Level 1 compliance.</p>
+        <div class="payment-methods">
+          <span class="pay-chip"><i class="fa-brands fa-cc-visa"></i> VISA</span>
+          <span class="pay-chip"><i class="fa-brands fa-cc-mastercard"></i> Mastercard</span>
+          <span class="pay-chip"><i class="fa-brands fa-cc-apple-pay"></i> Apple Pay</span>
+          <span class="pay-chip"><i class="fa-brands fa-google-pay"></i> G-Pay</span>
+          <span class="pay-chip"><i class="fa-brands fa-paypal"></i> PayPal</span>
+        </div>
+        <div class="ssl-guarantee">
+          <i class="fa-solid fa-lock"></i> 100% Secure Checkout Guaranteed
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 TechMart Global Inc. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Notice</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODALS & DRAWERS ================= -->
+
+  <!-- 1. Slide-out Cart Drawer -->
+  <div class="drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-header-title">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <h3>Shopping Cart (<span id="cartDrawerTotalItems">0</span>)</h3>
+      </div>
+      <button class="close-drawer-btn" id="closeCartBtn" aria-label="Close Cart">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Free Shipping Goal Progress Bar -->
+    <div class="free-shipping-goal" id="freeShippingGoal">
+      <div class="goal-text" id="freeShippingText">Add $150 more to enjoy FREE Express Shipping!</div>
+      <div class="goal-progress-track">
+        <div class="goal-progress-fill" id="freeShippingFill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scroll Area -->
+    <div class="cart-drawer-items" id="cartItemsContainer">
+      <!-- Items dynamically populated via JS -->
+    </div>
+
+    <!-- Cart Footer & Summary -->
+    <div class="cart-drawer-footer" id="cartFooter">
+
+      <!-- Promo Code Box -->
+      <div class="promo-box">
+        <div class="promo-input-group">
+          <input type="text" id="couponInput" placeholder="Promo code (e.g. TECH20)" uppercase>
+          <button type="button" class="btn btn-outline" id="applyCouponBtn">Apply</button>
+        </div>
+        <div class="applied-coupon-pill" id="appliedCouponPill" style="display: none;">
+          <span><i class="fa-solid fa-tag"></i> <strong id="appliedCouponCode"></strong> applied!</span>
+          <button type="button" id="removeCouponBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <!-- Cost Breakdown -->
+      <div class="cart-totals">
+        <div class="total-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="total-row discount-row" id="cartDiscountRow" style="display: none;">
+          <span>Discount</span>
+          <span id="cartDiscount">-$0.00</span>
+        </div>
+        <div class="total-row">
+          <span>Shipping</span>
+          <span id="cartShipping">FREE</span>
+        </div>
+        <div class="total-row">
+          <span>Estimated Tax (8%)</span>
+          <span id="cartTax">$0.00</span>
+        </div>
+        <div class="total-row grand-total">
+          <span>Total</span>
+          <span id="cartGrandTotal">$0.00</span>
+        </div>
+      </div>
+
+      <!-- Cart Action Buttons -->
+      <div class="cart-actions-group">
+        <button class="btn btn-primary btn-block btn-lg checkout-btn" id="proceedCheckoutBtn">
+          <i class="fa-solid fa-lock"></i> Secure Checkout
+        </button>
+        <button class="btn btn-text btn-block clear-cart-btn" id="clearCartBtn">
+          Clear Shopping Cart
+        </button>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- 2. Slide-out Wishlist Drawer -->
+  <div class="drawer-overlay" id="wishlistOverlay"></div>
+  <aside class="cart-drawer wishlist-drawer" id="wishlistDrawer" aria-label="Wishlist Drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-header-title">
+        <i class="fa-solid fa-heart" style="color: #ff3366;"></i>
+        <h3>Saved Wishlist (<span id="wishlistDrawerCount">0</span>)</h3>
+      </div>
+      <button class="close-drawer-btn" id="closeWishlistBtn" aria-label="Close Wishlist">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="cart-drawer-items" id="wishlistItemsContainer">
+      <!-- Items dynamically populated via JS -->
+    </div>
+  </aside>
+
+  <!-- 3. Product Quick View Modal -->
+  <div class="modal-backdrop" id="quickViewBackdrop"></div>
+  <div class="modal-wrapper" id="quickViewModal">
+    <div class="modal-box quick-view-box">
+      <button class="modal-close-btn" id="closeQuickViewBtn"><i class="fa-solid fa-xmark"></i></button>
+
+      <div class="quick-view-grid">
+        <!-- Image Preview & Gallery -->
+        <div class="quick-view-gallery">
+          <div class="main-preview-wrap">
+            <img id="quickViewMainImg" src="" alt="Product View">
+          </div>
+          <div class="gallery-thumbnails" id="quickViewThumbnails">
+            <!-- Thumbnails injected via JS -->
+          </div>
+        </div>
+
+        <!-- Product Specs & Actions -->
+        <div class="quick-view-details">
+          <span class="product-brand-tag" id="quickViewBrand">Brand</span>
+          <h2 class="quick-view-title" id="quickViewTitle">Product Name</h2>
+
+          <div class="quick-view-rating">
+            <div class="stars-wrap" id="quickViewStars"></div>
+            <span class="review-count" id="quickViewReviewCount">(0 reviews)</span>
+            <span class="stock-badge" id="quickViewStockBadge">In Stock</span>
+          </div>
+
+          <div class="quick-view-price-wrap">
+            <span class="price-current" id="quickViewPrice">$0.00</span>
+            <span class="price-original" id="quickViewOldPrice">$0.00</span>
+            <span class="badge-discount" id="quickViewDiscountBadge">Sale</span>
+          </div>
+
+          <p class="quick-view-desc" id="quickViewDesc"></p>
+
+          <!-- Specifications Table -->
+          <div class="specs-box">
+            <h4>Technical Specifications</h4>
+            <table class="specs-table" id="quickViewSpecsTable">
+              <!-- Rendered via JS -->
+            </table>
+          </div>
+
+          <!-- Color options if available -->
+          <div class="color-options-wrap" id="quickViewColorsWrap" style="display: none;">
+            <label>Available Colorways:</label>
+            <div class="color-badges" id="quickViewColors"></div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="quick-view-cta">
+            <div class="qty-counter">
+              <button type="button" id="qvQtyMinus"><i class="fa-solid fa-minus"></i></button>
+              <input type="number" id="qvQtyInput" value="1" min="1" max="10" readonly>
+              <button type="button" id="qvQtyPlus"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <button class="btn btn-primary btn-lg flex-1" id="qvAddToCartBtn">
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="btn btn-outline btn-icon-lg" id="qvWishlistBtn" title="Add to Wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+          </div>
+
+          <div class="quick-view-perks">
+            <span><i class="fa-solid fa-truck"></i> Fast Express Dispatch</span>
+            <span><i class="fa-solid fa-shield-check"></i> 2-Year Warranty</span>
+            <span><i class="fa-solid fa-rotate-left"></i> 30-Day Returns</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Multi-Step Checkout Modal -->
+  <div class="modal-backdrop" id="checkoutBackdrop"></div>
+  <div class="modal-wrapper" id="checkoutModal">
+    <div class="modal-box checkout-modal-box">
+      <button class="modal-close-btn" id="closeCheckoutBtn"><i class="fa-solid fa-xmark"></i></button>
+
+      <div class="checkout-steps-nav">
+        <div class="step-indicator active" id="stepIndicator1">
+          <span class="step-num">1</span>
+          <span class="step-label">Shipping Details</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-indicator" id="stepIndicator2">
+          <span class="step-num">2</span>
+          <span class="step-label">Payment</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-indicator" id="stepIndicator3">
+          <span class="step-num">3</span>
+          <span class="step-label">Confirmation</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Shipping Form -->
+      <div class="checkout-step-content" id="checkoutStep1">
+        <h3>Shipping & Contact Information</h3>
+        <p class="step-sub">Enter where you'd like your tech delivered.</p>
+
+        <form id="shippingForm" onsubmit="event.preventDefault(); app.goToCheckoutStep(2);">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="shipFirstName">First Name *</label>
+              <input type="text" id="shipFirstName" required placeholder="Alex">
+            </div>
+            <div class="form-group">
+              <label for="shipLastName">Last Name *</label>
+              <input type="text" id="shipLastName" required placeholder="Vance">
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="shipEmail">Email Address *</label>
+              <input type="email" id="shipEmail" required placeholder="alex.vance@example.com">
+            </div>
+            <div class="form-group">
+              <label for="shipPhone">Phone Number *</label>
+              <input type="tel" id="shipPhone" required placeholder="+1 (555) 019-2834">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="shipAddress">Street Address *</label>
+            <input type="text" id="shipAddress" required placeholder="742 Evergreen Terrace, Suite 4B">
+          </div>
+
+          <div class="form-grid-three">
+            <div class="form-group">
+              <label for="shipCity">City *</label>
+              <input type="text" id="shipCity" required placeholder="San Francisco">
+            </div>
+            <div class="form-group">
+              <label for="shipState">State / Province *</label>
+              <input type="text" id="shipState" required placeholder="California">
+            </div>
+            <div class="form-group">
+              <label for="shipZip">ZIP / Postal Code *</label>
+              <input type="text" id="shipZip" required placeholder="94107">
+            </div>
+          </div>
+
+          <div class="checkout-footer-buttons">
+            <button type="button" class="btn btn-outline" onclick="app.closeModal('checkoutModal')">Return to
+              Cart</button>
+            <button type="submit" class="btn btn-primary btn-lg">
+              Continue to Payment <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Payment Method Form -->
+      <div class="checkout-step-content" id="checkoutStep2" style="display: none;">
+        <h3>Choose Payment Method</h3>
+        <p class="step-sub">All transactions are encrypted with 256-bit SSL security.</p>
+
+        <div class="payment-methods-tabs">
+          <label class="pay-method-option active">
+            <input type="radio" name="paymentMethod" value="card" checked onchange="app.switchPayMethod('card')">
+            <div class="pay-method-content">
+              <i class="fa-solid fa-credit-card"></i>
+              <span>Credit / Debit Card</span>
+            </div>
+          </label>
+          <label class="pay-method-option">
+            <input type="radio" name="paymentMethod" value="paypal" onchange="app.switchPayMethod('paypal')">
+            <div class="pay-method-content">
+              <i class="fa-brands fa-paypal"></i>
+              <span>PayPal</span>
+            </div>
+          </label>
+          <label class="pay-method-option">
+            <input type="radio" name="paymentMethod" value="applepay" onchange="app.switchPayMethod('applepay')">
+            <div class="pay-method-content">
+              <i class="fa-brands fa-apple"></i>
+              <span>Apple Pay</span>
+            </div>
+          </label>
+          <label class="pay-method-option">
+            <input type="radio" name="paymentMethod" value="cod" onchange="app.switchPayMethod('cod')">
+            <div class="pay-method-content">
+              <i class="fa-solid fa-truck-ramp-box"></i>
+              <span>Cash on Delivery</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Simulated Credit Card Preview -->
+        <div id="cardPaymentBox">
+          <div class="simulated-credit-card">
+            <div class="card-chip"><i class="fa-solid fa-microchip"></i></div>
+            <div class="card-number-display" id="cardNumPreview">•••• •••• •••• 4242</div>
+            <div class="card-bottom">
+              <div>
+                <span class="card-sub-label">Card Holder</span>
+                <span class="card-val" id="cardNamePreview">ALEX VANCE</span>
+              </div>
+              <div>
+                <span class="card-sub-label">Expires</span>
+                <span class="card-val" id="cardExpPreview">12/28</span>
+              </div>
+            </div>
+          </div>
+
+          <form id="paymentForm" onsubmit="event.preventDefault(); app.processPayment();">
+            <div class="form-group">
+              <label for="cardNumber">Card Number</label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-credit-card"></i>
+                <input type="text" id="cardNumber" placeholder="4242 4242 4242 4242" maxlength="19" required>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="cardExpiry">Expiration Date</label>
+                <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+              </div>
+              <div class="form-group">
+                <label for="cardCvc">Security Code (CVC)</label>
+                <input type="password" id="cardCvc" placeholder="•••" maxlength="4" required>
+              </div>
+            </div>
+
+            <div class="checkout-footer-buttons">
+              <button type="button" class="btn btn-outline" onclick="app.goToCheckoutStep(1)">
+                <i class="fa-solid fa-arrow-left"></i> Back to Shipping
+              </button>
+              <button type="submit" class="btn btn-primary btn-lg" id="paySubmitBtn">
+                <i class="fa-solid fa-lock"></i> Pay <span id="paySubmitTotal">$0.00</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div id="altPaymentBox" style="display: none;" class="alt-payment-box">
+          <div class="alt-pay-msg">
+            <i class="fa-solid fa-circle-check"></i>
+            <h4 id="altPayTitle">PayPal Express Checkout</h4>
+            <p id="altPayDesc">You will be redirected to confirm your payment securely.</p>
+          </div>
+          <div class="checkout-footer-buttons">
+            <button type="button" class="btn btn-outline" onclick="app.goToCheckoutStep(1)">
+              <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="app.processPayment()">
+              Confirm & Complete Order
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Step 3: Order Confirmation -->
+      <div class="checkout-step-content" id="checkoutStep3" style="display: none;">
+        <div class="order-success-card">
+          <div class="success-icon-animation">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h2>Thank You For Your Order!</h2>
+          <p class="order-subtext">Your purchase was successful. An official receipt has been sent to your email.</p>
+
+          <div class="order-summary-box">
+            <div class="summary-field">
+              <span>Order Number:</span>
+              <strong id="confirmedOrderId">TM-984321</strong>
+            </div>
+            <div class="summary-field">
+              <span>Estimated Delivery:</span>
+              <strong id="confirmedDeliveryDate">Within 2-3 Business Days</strong>
+            </div>
+            <div class="summary-field">
+              <span>Total Paid:</span>
+              <strong id="confirmedTotalPaid" class="total-highlight">$0.00</strong>
+            </div>
+            <div class="summary-field">
+              <span>Tracking Status:</span>
+              <span class="tracking-pill"><i class="fa-solid fa-box"></i> Preparing for Dispatch</span>
+            </div>
+          </div>
+
+          <div class="order-success-actions">
+            <button class="btn btn-primary btn-lg" onclick="app.closeModal('checkoutModal')">
+              <i class="fa-solid fa-bag-shopping"></i> Continue Shopping
+            </button>
+            <button class="btn btn-outline btn-lg" onclick="window.print()">
+              <i class="fa-solid fa-print"></i> Print Invoice
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 5. User Account / Sign In Modal -->
+  <div class="modal-backdrop" id="authBackdrop"></div>
+  <div class="modal-wrapper" id="authModal">
+    <div class="modal-box auth-modal-box">
+      <button class="modal-close-btn" id="closeAuthBtn"><i class="fa-solid fa-xmark"></i></button>
+
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="tabLogin" onclick="app.switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab-btn" id="tabRegister" onclick="app.switchAuthTab('register')">Create Account</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" onsubmit="event.preventDefault(); app.handleLogin();">
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-envelope"></i>
+            <input type="email" id="loginEmail" placeholder="you@example.com" required value="alex.tech@example.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <div class="input-with-icon">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="loginPassword" placeholder="••••••••" required value="TechMart2026!">
+          </div>
+        </div>
+        <div class="form-row-between">
+          <label class="custom-checkbox">
+            <input type="checkbox" checked>
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="forgot-link"
+            onclick="app.showToast('Password reset link sent to your email!', 'info')">Forgot Password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">Sign In to TechMart</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" style="display: none;" onsubmit="event.preventDefault(); app.handleRegister();">
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-user"></i>
+            <input type="text" id="regName" placeholder="Alex Vance" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="regEmail">Email Address</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-envelope"></i>
+            <input type="email" id="regEmail" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="regPassword">Create Password</label>
+          <div class="input-with-icon">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="regPassword" placeholder="At least 8 characters" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">Create Free Account</button>
+      </form>
+
+      <div class="social-login-separator"><span>OR CONTINUE WITH</span></div>
+      <div class="social-auth-buttons">
+        <button type="button" class="btn btn-outline" onclick="app.handleSocialAuth('Google')">
+          <i class="fa-brands fa-google"></i> Google
+        </button>
+        <button type="button" class="btn btn-outline" onclick="app.handleSocialAuth('Apple')">
+          <i class="fa-brands fa-apple"></i> Apple
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Quick Back to Top Button -->
+  <button class="back-to-top" id="backToTopBtn" title="Back to Top" aria-label="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Application Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
